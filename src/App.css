@@ -1,223 +1,277 @@
-/* Global Styles */
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #2f353b 0%, #3b4347 100%); /* A dark gray, close to black */
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;  /* Ensure the body takes the full height of the screen */
-  display: flex;
-  justify-content: center;  /* Horizontally center */
-  align-items: center;      /* Vertically center */
-  text-align: center;       /* Ensure all text is centered */
-  overflow: auto;           /* Allow scrolling */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
 }
 
-/* Ensure the container does not get cut off */
-.container {
-  max-width: 800px;
-  width: 100%;
-  padding: 30px;
-  background-color: #34495e;  /* Dark gray with blue-ish undertones */
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;         /* Allow vertical scrolling if content overflows */
-  color: #ecf0f1;           /* Light text color */
-}
-
-/* Title styling */
-h1 {
-  color: #ecf0f1;
-  text-align: center;
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-h2 {
-  font-size: 1.6rem;
-  color: #bdc3c7;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Task input form styling */
-.input-group {
-  margin-bottom: 30px;
-}
-
-.input-group input {
-  font-size: 1.1rem;
-  padding: 18px;
-  border-radius: 8px;
-  border: 1px solid #3b4347;
-  background-color: #3b4347;  /* Dark gray for input background */
-  color: #ecf0f1;
-}
-
-.input-group button {
-  padding: 18px;
-  border-radius: 8px;
-  border: none;
-  background-color: #2980b9;
-  color: white;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-}
-
-.input-group button:hover {
-  background-color: #3498db;
-}
-
-/* Task List Item Styling */
-.list-group-item {
-  background-color: #3b4347;  /* Dark gray for list items */
+.containe {
+  width: 100vw;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  background-color: #fbfbfc;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  width: 100vw;
+}
+.al{
+  text-align: center;
+}
+.details {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.log-form {
+  border: 1px solid black;
+  padding: 5%;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+.inp {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.clic {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.clic:hover {
+  background-color: #45a049;
+}
+.text-cen {
+  /* text-align: center; */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.fll{
+  display: flex;
+  justify-content:space-between;
+}
+.card-titl {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 10px;
+  float: right;
+}
+
+.n-danger {
+  background-color: #ee2805;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.n-danger:hover {
+  background-color: #d32f2f;
+}
+
+.input-gr {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.for {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.forn {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.rimary {
+  background-color: #5247bb;
+  color: white;
+  padding: 1px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  
+}
+
+.rimary:hover {
+  background-color: #45a049;
+}
+
+.lisroup {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-groutems-center {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.list-group-item:hover {
-  transform: scale(1.05);
 }
 
 .list-group-item-success {
-  background-color: #27ae60;  /* Green background for completed tasks */
+  background-color: #c8e6c9;
 }
 
-.list-group-item .task-text {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ecf0f1;
-  cursor: pointer;
-  transition: color 0.3s ease;
+.high-priority {
+  border-left: 5px solid red;
+  background-color: rgb(201, 157, 157);
 }
 
-.list-group-item .task-text:hover {
-  color: #1abc9c;  /* Hover color for task text */
+.medium-priority {
+  border-left: 5px solid orange;
+  background-color: rgb(212, 181, 124);
 }
 
-.btn-danger {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  padding: 12px 25px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+.low-priority {
+  border-left: 5px solid green;
+  background-color: #7eb980;
 }
 
-.btn-danger:hover {
-  background-color: #c0392b;
-}
-
-.card {
-  background-color: #3b4347;  /* Dark gray for card */
-  border-radius: 12px;
-  padding: 25px;
-  margin-top: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card-title {
-  font-size: 1.5rem;
-  color: #ecf0f1;
-  font-weight: 600;
-}
-
-.card-body {
-  color: #bdc3c7;
-  font-size: 1.1rem;
-}
-
-/* Alert styles */
-.alert-info {
-  background-color: #16a085;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-.alert-danger {
-  background-color: #e74c3c;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-/* Input fields */
-input[type="text"] {
-  font-size: 1.1rem;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #7f8c8d;
-  width: 80%;
-  margin-right: 15px;
-  background-color: #3b4347;
-  color: #ecf0f1;
-}
-
-/* Buttons */
-button {
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .input-group input {
-    font-size: 1rem;
-  }
-
-  .input-group button {
-    font-size: 1rem;
-  }
-}
-
-/* Task Priority Styling */
-.list-group-item.high-priority {
-  border-left: 8px solid #e74c3c;  /* Red border for high priority */
-  background-color: #c0392b;  /* Light red background */
-}
-
-.list-group-item.medium-priority {
-  border-left: 8px solid #f39c12;  /* Orange border for medium priority */
-  background-color: #f39c12;  /* Light orange background */
-}
-
-.list-group-item.low-priority {
-  border-left: 8px solid #2ecc71;  /* Green border for low priority */
-  background-color: #27ae60;  /* Light green background */
-}
-/* Background color for the login page */
-/* Gradient background for the login page */
-.login-page {
-  background: linear-gradient(13deg, #6a11cb 0%, #2575fc 100%);
-  color: white;
-  height: 100vh;
+.flex-gro {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  width: 100%;
 }
 
-/* Optional: Style for the form */
-.login-form {
-  background-color: rgba(255, 255, 255, 0.9); /* Light background for the form */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.text-dhrough {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.bn-sm {
+  background-color: #f34425;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bn-sm:hover {
+  background-color: #d32f2f;
+}
+
+.mkk {
+  margin-top: 10px;
+}
+
+.card-bdy {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.card-tet {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.alxt-center {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Media Queries for Larger Screens */
+
+/* Tablet and Up */
+@media (min-width: 768px) {
+  .container {
+    max-width: 80%;
+  }
+
+  .log-form {
+    max-width: 400px;
+  }
+
+  .input-gr {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .for, .forn {
+    width: 48%;
+  }
+
+  .n-danger, .rimary {
+    width: 100%;
+  }
+
+  .list-groutems-center {
+    padding: 15px;
+  }
+
+  .card-g {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop and Up */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 60%;
+  }
+
+  .text-cen {
+    font-size: 2rem;
+  }
+
+  .log-form {
+    max-width: 500px;
+  }
+
+  .input-gr {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .for, .forn {
+    width: 45%;
+  }
+
+  .n-danger, .rimary {
+    width: auto;
+  }
 }
