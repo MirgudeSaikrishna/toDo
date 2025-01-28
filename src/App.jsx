@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaPen } from 'react-icons/fa'; // FaPen is the pen icon from FontAwesome
+// import { FaPen } from 'react-icons/fa'; // FaPen is the pen icon from FontAwesome
 import {login,logout} from './actions/authAction';
 import { addTask, removeTask, toggleTask, setTaskWeather,clearTasks } from './actions/tasksActions';
 // API key for OpenWeatherMap
@@ -146,7 +146,7 @@ const handleAddTask = () => {
   const renderAppContent = () => (
     <div className="containe">
       <div className='fll'>
-      <h1>Task Manager <FaPen size={28}/></h1>
+      <h1>Task Manager </h1>
       <button className="n-danger" onClick={handleLogout}>Logout</button>
       </div>
       <hr width="100%"></hr>
