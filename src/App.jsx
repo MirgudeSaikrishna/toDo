@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaPen } from 'react-icons/fa'; // FaPen is the pen icon from FontAwesome
 import {login,logout} from './actions/authAction';
 import { addTask, removeTask, toggleTask, setTaskWeather,clearTasks } from './actions/tasksActions';
 // API key for OpenWeatherMap
@@ -47,7 +48,11 @@ const handleAddTask = () => {
       setIsLoginForm(false);
     }
   };
-
+  const valid=(name)=>{
+    if(!name){
+      alert("username cannot be empty")
+    }
+  }
   const handleLogout = () => {
     localStorage.removeItem('username');
     dispatch(logout());
@@ -77,7 +82,7 @@ const handleAddTask = () => {
 
   useEffect(() => {
     tasks.forEach((task, index) => {
-      if (!task.weather && task.text.toLowerCase().includes('outdoor')) {
+      if (!task.weather && task.text.toLowerCase().includes('out')) {
         const fetchTaskWeather = async () => {
           const weatherData = await fetchWeather(location); // You can change the city here
           if (weatherData) {
@@ -110,46 +115,57 @@ const handleAddTask = () => {
   }, [tasks, isAuthenticated, username]);
 
   const renderLoginForm = () => (
-    <div className='login-page'>
-      <h5>A React-based task manager app...</h5>
-      <div className="text-center login-form">
-      
-      <input
-        type="text"
-        placeholder="Username"
-        value={loginUsername}
-        onChange={(e) => setLoginUsername(e.target.value)}
-        className="form-control mb-3"
-      />
-      <input
-        type="text"
-        placeholder="Location"
-        value={location}
-        onChange={(e) => setlocation(e.target.value)}
-        className="form-control mb-3"
-      />
-      <button onClick={handleLogin} className="btn btn-primary">Login</button>
+    <div className='landing-page'>
+      <div className='details'>
+        <h1>Create or login to your task managing account</h1>
+        <h4>Your data is safe in your own browser</h4>
+      </div>
+      <div className='log-form'>
+        <div className="form">
+        
+        <input
+          type="text"
+          placeholder="Username"
+          value={loginUsername}
+          onChange={(e) => setLoginUsername(e.target.value)}
+          className="inp"
+        />
+        <input
+          type="text"
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setlocation(e.target.value)}
+          className="inp"
+        />
+        <button onClick={()=>{handleLogin() ; valid(loginUsername)}} className="clic">Login</button>
+        </div>
       </div>
     </div>
   );
 
   const renderAppContent = () => (
-    <div className="container mt-5">
-      <h1 className="text-center mb-4">Welcome, {username}!</h1>
-      <h5 className="card-title">{location}</h5>
-      <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+    <div className="containe">
+      <div className='fll'>
+      <h1>Task Manager <FaPen size={28}/></h1>
+      <button className="n-danger" onClick={handleLogout}>Logout</button>
+      </div>
+      <hr width="100%"></hr>
+      <h5 className="card-titl">{location}</h5>
+      <h1 className="text-cen">Welcome, {username}!</h1>
+      
+      
 
       {/* Task Input Form */}
-      <div className="input-group mb-3">
+      <div className="input-gr">
         <input
           type="text"
-          className="form-control"
+          className="for"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Enter a new task"
         />
         <select
-          className="form-control"
+          className="forn"
           value={newPriority}
           onChange={(e) => setNewPriority(e.target.value)}
         >
@@ -157,43 +173,42 @@ const handleAddTask = () => {
           <option value="Medium">Medium Priority</option>
           <option value="Low">Low Priority</option>
         </select>
-        <button className="btn btn-primary" onClick={handleAddTask}>
+        <button className="rimary" onClick={handleAddTask}>
           Add Task
         </button>
       </div>
-
+      <div>Use 'OUT' keyword to access the weather</div>
+      <hr width="100%"></hr>
       {/* Loading Indicator */}
-      {loadingWeather && <div className="alert alert-info text-center">Loading weather data...</div>}
+      {loadingWeather && <div className="alxt-center">Loading weather data...</div>}
 
       {/* Tasks List */}
       
-      <ul className="list-group">
+      <ul className="lisroup">
         {tasks.map((task, index) => (
-          <li key={index} className={`list-group-item d-flex justify-content-between align-items-center ${task.isCompleted ? 'list-group-item-success' : ''}${task.priority === 'High' ? 'high-priority' : task.priority === 'Medium' ? 'medium-priority' : 'low-priority'}`}>
+          <li key={index} className={`list-groutems-center ${task.isCompleted ? 'list-group-item-success' : ''}${task.priority === 'High' ? 'high-priority' : task.priority === 'Medium' ? 'medium-priority' : 'low-priority'}`}>
             <span
-              className={`flex-grow-1 ${task.isCompleted ? 'text-decoration-line-through' : ''}`}
+              className={`flex-gro ${task.isCompleted ? 'text-dhrough' : ''}`}
               onClick={() => handleToggleTask(index)}
               style={{ cursor: 'pointer' }}
             >
-            {task.text} <strong>({task.priority})</strong>
-            </span>
-            <button className="btn btn-danger btn-sm" onClick={() => handleRemoveTask(index)}>
-              Remove
-            </button>
+            {task.text} 
             {task.weather && (
-                <div className="mt-2">
-                  <div className="card">
-                    <div className="card-body">
-                      
-                      <p className="card-text">Temperature: {task.weather.main.temp}°C</p>
-                      <p className="card-text">{task.weather.weather[0].description}</p>
-                    </div>
-                  </div>
+                <div className="card-bdy">
+                  <p className="card-tet">Temperature: {task.weather.main.temp}°C</p>
+                  <p className="card-tet">{task.weather.weather[0].description}</p>
                 </div>
               )}
+            {/* <strong>({task.priority})</strong> */}
+            </span>
+            <button className="bn-sm" onClick={() => handleRemoveTask(index)}>
+              Remove
+            </button>
+            
           </li>
         ))}
       </ul>
+      <div className='al'>Click on your task to mark as completed</div>
   </div>
 );
 
